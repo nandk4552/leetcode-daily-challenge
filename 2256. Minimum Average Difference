@@ -1,0 +1,38 @@
+#define ll long long 
+class Solution {
+public:
+    int minimumAverageDifference(vector<int>& nums) {
+        ll total = 0;
+        ll sum = 0;
+        ll min = INT_MAX;
+        int ans = 0;
+        
+        for(int i=0; i<nums.size(); i++) {
+            total += nums[i];
+        }
+    
+        for(int i=0; i<nums.size(); i++) {
+            sum += nums[i];
+            
+            ll t = total - sum;
+            
+            ll temp = nums.size()-i-1;
+            
+            int avg = 0;
+            
+            if(temp == 0) {
+                avg = sum/(i+1);
+            }
+            else {
+                avg = abs(sum/(i+1) - (t/temp));
+            }
+            if(min > avg) {
+                min = avg;
+                ans = i;
+            }
+        }
+        
+        return ans;
+    
+    }
+};
