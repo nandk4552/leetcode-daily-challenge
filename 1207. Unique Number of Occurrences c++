@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        // create map
+        unordered_map<int, int> freq;
+        // stroe the array elements into map
+        for(auto x: arr) {
+            freq[x]++;
+        }
+        // create a set
+        unordered_set<int> s;
+        // iterate to the map and store the second of map that is the freq of the value
+        for(auto x : freq) {
+            s.insert(x.second);
+        }
+        
+        return freq.size() == s.size();
+    }
+};
